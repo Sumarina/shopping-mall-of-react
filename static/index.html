@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蚊子今日份打卡</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+
+        .rows {
+            text-align: center;
+            margin: 20px auto;
+
+        }
+
+        .input {
+            width: 270px;
+            height: 36px;
+            border: 1px solid #f98639;
+            border-radius: 4px;
+            font-size: 18px;
+            padding: 0px 8px;
+            box-sizing: border-box;
+            outline: 0;
+        }
+
+        .button {
+            height: 36px;
+            line-height: 36px;
+            width: 128px;
+            border-radius: 4px;
+            background: #f98639;
+            color: #ffffff;
+            outline: 0;
+            border: 0px;
+            cursor: pointer;
+        }
+
+        .success {
+
+            height: 60px;
+            line-height: 60px;
+            font-size: 20px;
+            background: linear-gradient(0deg, #f98639, rgba(47, 158, 244, 0));
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        .m-table {
+            margin: 20px 60px;
+            display: none;
+        }
+
+        .m-table__content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .m-table__content--column {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .field {
+            height: 48px;
+            line-height: 48px;
+            overflow: hidden;
+        }
+
+        .tbody-row {
+            border-bottom: 1px solid #bbbbbb;
+            height: 48px;
+            line-height: 48px;
+
+        }
+
+        .tbody-row:first-child {
+            border-top: 1px solid #bbbbbb;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>蚊子今日份打卡</h1>
+    <div class="rows">
+        <input class="input" id="name" type="text" placeholder="请输入你的姓名">
+        <button class="button js-confirm">打卡</button>
+        <button class="button js-query">查询记录</button>
+    </div>
+    <div class="rows">
+        <span class="success" id="success"></span>
+    </div>
+    <div class="m-table js-table">
+        <div class="m-table__content">
+            <div class="m-table__content--column">
+                <div class="field">姓名</div>
+                <div class="tbody js-name">
+
+                </div>
+            </div>
+            <div class="m-table__content--column">
+                <div class="field">打卡记录</div>
+                <div class="tbody js-record">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $('.js-query').click(query);
+    $(".js-confirm").click(confirm);
+    function confirm() {
+        const name = $("#name").val();
+        name && $.ajax({
+            url: "/update",
+            type: "post",
+            data: JSON.stringify({ name: name }),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res) {
+                if (res['status'] === 'success') {
+                    const message = `恭喜🎉，${res['message']}`;
+                    $('#success').text(message);
+                    $('#success').addClass('show');
+
+                }
+            }
+        })
+    }
+    function query() {
+        const name = $("#name").val();
+        $.ajax({
+            url: "/query",
+            type: "post",
+            data: JSON.stringify({ name: name }),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (res) {
+                if (res['status'] === 'success') {
+                    const data = res['data'];
+                    const keys = Object.keys(data);
+                    if (keys.length > 0) {
+                        for (const key of keys) {
+                            data[key].map(d => {
+                                const recordHtm = document.createElement('div');
+                                recordHtm.classList.add('tbody-row');
+                                recordHtm.innerText = formate(d);
+                                $('.js-record')[0].append(recordHtm);
+                                const nameHtm = document.createElement('div');
+                                nameHtm.innerText = key;
+                                nameHtm.classList.add('tbody-row');
+                                $('.js-name')[0].append(nameHtm);
+
+                            })
+                        }
+                        $('.js-table').addClass('show');
+                    }
+                }
+            }
+        })
+    }
+
+    function formate(timestamp) {
+        const date = new Date(timestamp);
+        return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+
+    }
+</script>
+
+</html>
