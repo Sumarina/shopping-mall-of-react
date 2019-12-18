@@ -148,6 +148,8 @@
             dataType: "json",
             success: function (res) {
                 if (res['status'] === 'success') {
+                    $('.js-record')[0].innerHTML = '';
+                    $('.js-name')[0].innerHTML = '';
                     const data = res['data'];
                     const keys = Object.keys(data);
                     if (keys.length > 0) {
