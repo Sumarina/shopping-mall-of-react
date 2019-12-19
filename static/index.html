@@ -123,7 +123,7 @@
     function confirm() {
         const name = $("#name").val();
         name && $.ajax({
-            url: "/update",
+            url: "update",
             type: "post",
             data: JSON.stringify({ name: name }),
             contentType: "application/json",
@@ -141,7 +141,7 @@
     function query() {
         const name = $("#name").val();
         $.ajax({
-            url: "/query",
+            url: "query",
             type: "post",
             data: JSON.stringify({ name: name }),
             contentType: "application/json",
