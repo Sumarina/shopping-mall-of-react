@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%=htmlWebpackPlugin.options.config.template.title%></title>
 </head>
+
 <body>
-    
+    <%if(htmlWebpackPlugin.options.config.template.header){%>
+    <div>header</div>
+    <%}%>
+    <h1>hello</h1>
+    <!-- <img src="<%= require('../src/img/starGril.jpg')%>" alt=""> -->
 </body>
+
 </html>

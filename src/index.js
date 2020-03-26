@@ -1,3 +1,5 @@
+import './css/main.less';
+import './css/main.css';
 class Animals {
   constructor(name) {
     this.name = name;
@@ -9,3 +11,5 @@ class Animals {
     this.name = name;
   }
 }
+
+console.log('test...');
