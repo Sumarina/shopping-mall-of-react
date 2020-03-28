@@ -1,5 +1,6 @@
 import './css/main.less';
 import './css/main.css';
+import './css/index.css'
 class Animals {
   constructor(name) {
     this.name = name;
@@ -11,5 +12,4 @@ class Animals {
     this.name = name;
   }
 }
-
-console.log('test...');
+console.log("test hot...")

@@ -1,26 +1,21 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 const path = require('path');
 const isDev = process.env.NODE_ENV === 'development';
-const config = require('./public/config')[isDev ? 'dev' : 'build'];
+const config = require('../public/config')[isDev ? 'dev' : 'build'];
 
 module.exports = {
   entry: './src/index.js',
+  resolve: {
+    modules: ['./src/components', 'node_modules'] //resolve配置webpack如何寻找模块所对应的文件
+  },
   output: {
-    path: path.resolve(__dirname, 'dist'), //必须绝对路径
+    path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.[hash:6].js',
     publicPath: '/' //CDN地址
-  },
-  mode: isDev ? 'development' : 'production',
-  devtool: 'cheap-module-eval-source-map',
-  devServer: {
-    port: '3000',
-    quiet: false, //除初始启动信息之外的内容不会被打印到控制台,默认不启动 ，启动之后会看不到错误和报警信息
-    inline: false,
-    stats: 'errors-only', //仅打印error
-    overlay: false,
-    clientLogLevel: 'silent',
-    compress: true //是否启用gzip压缩
   },
   module: {
     rules: [
@@ -43,7 +38,7 @@ module.exports = {
       {
         test: /\.(le|c)ss$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -88,6 +83,17 @@ module.exports = {
       },
       config: config
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: './public/js/*.js',
+        to: path.resolve(__dirname, '../dist', 'js'),
+        flatten: true
+      }
+    ]),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ]
 };
