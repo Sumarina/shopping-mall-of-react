@@ -12,6 +12,15 @@ module.exports = merge(baseWebpackConfig, {
     stats: 'errors-only', //仅打印error
     overlay: false,
     clientLogLevel: 'silent',
-    compress: true //是否启用gzip压缩
+    compress: true, //是否启用gzip压缩
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://192.168.2.213:9090', //坑:写localhost不行，改成IP地址即可
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     },
+    //     changeOrigin: true
+    //   }
+    // }
   }
 });

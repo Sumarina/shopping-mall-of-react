@@ -1,6 +1,6 @@
 import './css/main.less';
 import './css/main.css';
-import './css/index.css'
+import './css/index.css';
 class Animals {
   constructor(name) {
     this.name = name;
@@ -12,4 +12,11 @@ class Animals {
     this.name = name;
   }
 }
-console.log("test hot...")
+
+// fetch('/api/user')
+//   .then(res => {
+//     return res.json();
+//   })
+//   .then(res => {
+//     console.log('user', res);
+//   });

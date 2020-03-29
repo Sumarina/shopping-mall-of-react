@@ -1,24 +1,26 @@
-// const Koa = require('koa');
-// const Router = require('koa-router');
-// const static = require('koa-static');
-// const path = require('path');
-// const bodyParser = require('koa-bodyparser');
-// const utils = require('./utils');
+const Koa = require('koa');
+const Router = require('koa-router');
+const static = require('koa-static');
+const path = require('path');
+const bodyParser = require('koa-bodyparser');
 
-// const fs = require('fs');
+const fs = require('fs');
 
-// const staticPath = './static';
+const staticPath = './static';
 
-// const app = new Koa();
-// const router = new Router();
+const app = new Koa();
+const router = new Router();
 
-// app.use(static(path.join(__dirname, staticPath)));
-// app.use(bodyParser());
+app.use(static(path.join(__dirname, staticPath)));
+app.use(bodyParser());
 
-// app.use(async (ctx, next) => {
-//   await next();
-// });
+app.use(async (ctx, next) => {
+  await next();
+});
 
+router.get('/user', async ctx => {
+  return (ctx.body = { name: 'marin', age: '20' });
+});
 // router.post('/update', async ctx => {
 //   const body = ctx.request.body;
 //   const name = body['name'];
@@ -97,9 +99,9 @@
 //   return `${time.getFullYear()}年${time.getMonth() + 1}月${time.getDate()}日`;
 // }
 
-// app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes()).use(router.allowedMethods());
 
-// app.listen(9090, err => {
-//   if (err) throw err;
-//   console.log('runing...');
-// });
+app.listen(9090, err => {
+  if (err) throw err;
+  console.log('runing...');
+});

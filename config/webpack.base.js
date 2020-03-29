@@ -10,6 +10,7 @@ const config = require('../public/config')[isDev ? 'dev' : 'build'];
 module.exports = {
   entry: './src/index.js',
   resolve: {
+    extensions: ['.js', '.jsx'],
     modules: ['./src/components', 'node_modules'] //resolve配置webpack如何寻找模块所对应的文件
   },
   output: {
