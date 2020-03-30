@@ -1,22 +1,10 @@
-import './css/main.less';
-import './css/main.css';
 import './css/index.css';
-class Animals {
-  constructor(name) {
-    this.name = name;
-  }
-  getName() {
-    return this.name;
-  }
-  setName(name) {
-    this.name = name;
-  }
-}
+import React from 'react';
+import { render } from 'react-dom';
+const app = (
+  <div>
+    <h2>React</h2>
+  </div>
+);
 
-// fetch('/api/user')
-//   .then(res => {
-//     return res.json();
-//   })
-//   .then(res => {
-//     console.log('user', res);
-//   });
+render(app, document.getElementById('app'));

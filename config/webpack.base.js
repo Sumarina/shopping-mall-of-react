@@ -103,4 +103,5 @@ const webpackConfig = {
   ]
 };
 
-module.exports = new SpeedMeasureWebpackPlugin().wrap(webpackConfig);
+// module.exports = new SpeedMeasureWebpackPlugin().wrap(webpackConfig);
+module.exports = webpackConfig;

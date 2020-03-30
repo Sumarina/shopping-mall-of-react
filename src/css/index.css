@@ -1,3 +1,2 @@
-div {
-    font-size: 13px;
-}
+@import './main.css';
+@import './main.less';
