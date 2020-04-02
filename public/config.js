@@ -1,7 +1,7 @@
 module.exports={
     dev:{
         template:{
-            title:"hello",
+            title:"每日打卡",
             header:false,
             footer:false
         }
