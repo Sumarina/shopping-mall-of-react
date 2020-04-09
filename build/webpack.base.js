@@ -11,7 +11,7 @@ const config = require('../public/config')[isDev ? 'dev' : 'build'];
 const webpackConfig = {
   entry: './src/index.js',
   resolve: {
-    extensions: ['.js', '.jsx']
+    // extensions: ['.js', '.jsx']
     // modules: ['./src/components', 'node_modules'] //resolve配置webpack如何寻找模块所对应的文件 注意坑，如果引入的模块中也存在node_modules，则会提示找不到对应模块
   },
   output: {
@@ -56,9 +56,7 @@ const webpackConfig = {
             }
           },
           'less-loader'
-        ],
-        include: [path.resolve(__dirname, '../src/css')]
-        // exclude: /node_module/
+        ]
       },
       {
         test: /\.(png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,

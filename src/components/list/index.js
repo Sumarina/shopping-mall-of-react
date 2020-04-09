@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { Button } from 'antd';
+
 
 function AvatarComp(props) {
   return (
     <div>
       my name is{props.name},age {props.age}
+      <Button>test</Button>
     </div>
   );
 }
