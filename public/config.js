@@ -1,14 +1,14 @@
 module.exports={
     dev:{
         template:{
-            title:"每日打卡",
+            title:"模拟购物商场",
             header:false,
             footer:false
         }
     },
     build:{
         template:{
-            title:"world",
+            title:"模拟购物商城",
             header:true,
             footer:false
         }
