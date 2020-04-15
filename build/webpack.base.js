@@ -19,6 +19,17 @@ const webpackConfig = {
     filename: 'bundle.[hash:6].js',
     publicPath: '/' //CDN地址
   },
+  optimization:{
+    splitChunks:{
+      cacheGroups:{
+        commons:{
+          test:/[\\/]node_modules[\\/]/,
+          name:"vendors",
+          chunks:"all"
+        }
+      }
+    }
+  },
   module: {
     rules: [
       {

@@ -50,6 +50,7 @@ export default class List extends Component {
         <RadioGroup name="fruits">
           <Radio value="banana">香蕉</Radio>
           <Radio value="apple">苹果</Radio>
+          <Radio value="peach">桃子</Radio>
         </RadioGroup>
       </div>
     );
