@@ -1,11 +1,11 @@
 import './css/index.css';
 import React from 'react';
 import { render } from 'react-dom';
-import List from './components/list';
+import Header from './components/header';
 
 const app = (
   <div>
-    <List />
+    <Header />
   </div>
 );
 
