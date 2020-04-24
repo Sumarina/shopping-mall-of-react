@@ -1,12 +1,6 @@
 import './css/index.css';
 import React from 'react';
 import { render } from 'react-dom';
-import Header from './components/header';
+import App from './components/app';
 
-const app = (
-  <div>
-    <Header />
-  </div>
-);
-
-render(app, document.getElementById('app'));
+render(<App></App>, document.getElementById('app'));
