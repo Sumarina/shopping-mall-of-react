@@ -1,5 +1,5 @@
 @import './base.less';
-@import './color.less';
-@import './common.css';
+@import './utils.less';
+@import './theme/default.less';
 @import './space.css';
 @import './header/header.less';

@@ -1,7 +1,6 @@
 .header {
   .site-topbar {
-    background-color: @black;
-    color: @white;
+    background-color: @header-background;
 
     .container {
       display: flex;
@@ -9,7 +8,7 @@
       font-size: 12px;
 
       a {
-        color: @white;
+        color: @sliver;
         display: inline-block;
         line-height: 40px;
         margin: 0px 15px;
@@ -24,5 +23,79 @@
         display: flex;
       }
     }
+  }
+
+  .site-header {
+    padding: 22px;
+
+    .container {
+      width: 1226px;
+      margin: 0 auto;
+
+      .header-logo {
+        .logo {
+          position: relative;
+          display: block;
+          width: 55px;
+          height: 55px;
+
+          &::before {
+            content: '';
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            background-image: url(../../img/logo.png);
+          }
+        }
+
+      }
+
+      .header-nav {
+        font-size: 16px;
+
+        .link {
+          color: @black;
+          display: inline-block;
+          padding: 15px 10px 14px;
+
+          &:hover {
+            color: @salmon;
+          }
+        }
+
+        .item-children {
+          position: absolute;
+
+          .children-list {
+            display: block;
+            width: 180px;
+            height: auto;
+            text-align: center;
+
+            .figure {
+              width: 160px;
+              height: 110px;
+              background-image: url(../../img/header/mi-10.png);
+              background-size: cover;
+              margin: 0 auto;
+            }
+          }
+        }
+      }
+
+      .header-search {
+        font-size: 14px;
+
+        .search-text {
+          width: 223px;
+          height: 48px;
+          padding: 0 10px;
+          line-height: 48px;
+          outline: none;
+        }
+      }
+    }
+
+
   }
 }
