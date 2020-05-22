@@ -1,6 +1,14 @@
-import React, { Component } from 'react';
+import { Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 
+import DropdownMenus from './dropdownMenus';
+
+const menuData = [1, 2, 3].map((item) => ({ id: item, href: 'www.sumanrin.cn', description: `小米${item}` }));
+const menu = <DropdownMenus menus={menuData}></DropdownMenus>;
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <div className="header">
@@ -28,41 +36,18 @@ export default class Header extends Component {
             <div className="header-nav">
               <ul className="d-flex">
                 <li>
-                  <a href="#" className="link">
-                    小米手机
-                  </a>
-                  <div className="item-children">
-                    <div className="container">
-                      <ul className="d-flex">
-                        <li>
-                          <a className="children-list">
-                            <div className="figure"></div>
-                            <div className="title">小米10 Pro</div>
-                            <div className="price">4399元起</div>
-                          </a>
-                        </li>
-                        <li>
-                          <a className="children-list">
-                            <div className="figure"></div>
-                            <div className="title">小米10 Pro</div>
-                            <div className="price">4399元起</div>
-                          </a>
-                        </li>
-                        <li>
-                          <a className="children-list">
-                            <div className="figure"></div>
-                            <div className="title">小米10 Pro</div>
-                            <div className="price">4399元起</div>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <Dropdown overlay={menu}>
+                    <a className="ant-dropdown-link link" onClick={(e) => e.preventDefault()}>
+                      小米手机
+                    </a>
+                  </Dropdown>
                 </li>
                 <li>
-                  <a href="#" className="link">
-                    Redmi红米
-                  </a>
+                  <Dropdown overlay={menu}>
+                    <a className="ant-dropdown-link link" onClick={(e) => e.preventDefault()}>
+                      Redmi红米
+                    </a>
+                  </Dropdown>
                 </li>
                 <li>
                   <a href="#" className="link">

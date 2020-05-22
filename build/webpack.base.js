@@ -17,18 +17,18 @@ const webpackConfig = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.[hash:6].js',
-    publicPath: '/' //CDN地址
+    publicPath: '/', //CDN地址
   },
-  optimization:{
-    splitChunks:{
-      cacheGroups:{
-        commons:{
-          test:/[\\/]node_modules[\\/]/,
-          name:"vendors",
-          chunks:"all"
-        }
-      }
-    }
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -46,7 +46,7 @@ const webpackConfig = {
         //     ]
         //   ]
         // },
-        include: [path.resolve(__dirname, '../src')]
+        include: [path.resolve(__dirname, '../src')],
         // exclude: /node_modules/ //排除node_modules文件
       },
       {
@@ -57,17 +57,17 @@ const webpackConfig = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: function() {
+              plugins: function () {
                 return [
                   require('autoprefixer')({
-                    overrideBrowserslist: ['>0.25%', 'not dead']
-                  })
+                    overrideBrowserslist: ['>0.25%', 'not dead'],
+                  }),
                 ];
-              }
-            }
+              },
+            },
           },
-          'less-loader'
-        ]
+          'less-loader',
+        ],
       },
       {
         test: /\.(png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,
@@ -78,14 +78,14 @@ const webpackConfig = {
               outputPath: 'assets',
               limit: 10240,
               esModule: false,
-              name: '[name]_[hash:6].[ext]'
-            }
-          }
+              name: '[name]_[hash:6].[ext]',
+            },
+          },
         ],
-        include: [path.resolve(__dirname, '../src/img')]
+        include: [path.resolve(__dirname, '../src/img')],
         // exclude: /node_module/
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -93,23 +93,29 @@ const webpackConfig = {
       filename: 'index.html',
       minify: {
         removeAttributeQuotes: false,
-        collapseWhitespace: false
+        collapseWhitespace: false,
       },
-      config: config
+      config: config,
     }),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
       {
         from: './public/js/*.js',
         to: path.resolve(__dirname, '../dist', 'js'),
-        flatten: true
-      }
+        flatten: true,
+      },
     ]),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/[name].css',
     }),
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      React: 'react',
+      Component: ['react', 'Component'],
+      PureComponent: ['react', 'PureComponent'],
+      _: 'underscore',
+    }),
+  ],
 };
 
 // module.exports = new SpeedMeasureWebpackPlugin().wrap(webpackConfig);
