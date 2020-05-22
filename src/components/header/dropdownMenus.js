@@ -12,7 +12,7 @@ const handlerMenuItems = (menus) => {
                   <a className="children-list">
                     <div className="figure"></div>
                     <div className="title">{menu.description}</div>
-                    <div className="price">4339元起</div>
+                    <div className="price">439元起</div>
                   </a>
                 </li>
               </ul>
