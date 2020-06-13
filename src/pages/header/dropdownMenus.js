@@ -4,21 +4,22 @@ const handlerMenuItems = (menus) => {
   return menus.map((menu) => {
     return (
       <Menu.Item key={menu.id}>
-        {/* <a target="_blank" rel="noopener noreferrer" href={menu.href}> */}
-          <div className="item-children">
+        <a target="_blank" rel="noopener noreferrer" href={menu.href}>
+          {menu.description}
+          {/* <div className="item-children">
             <div className="container">
               <ul className="d-flex">
                 <li>
                   <a className="children-list">
                     <div className="figure"></div>
-                    <div className="title">{menu.description}</div>
+                    <div className="title"></div>
                     <div className="price">439元起</div>
                   </a>
                 </li>
               </ul>
             </div>
-          </div>
-        {/* </a> */}
+          </div> */}
+        </a>
       </Menu.Item>
     );
   });
