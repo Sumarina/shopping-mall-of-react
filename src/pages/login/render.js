@@ -14,13 +14,14 @@ const template = (opts = {}) => {
         ${autocompleteAdapter}
         <label class="login-account-wrapper">
             <span class="account-label">${opts.accountLabel}</span>
-            <input id="login-account" name="account" type="text" placeholder="${opts.accountPlaceholder}" autocomplete="${autocompleteValue}" />
+            <input id="login-account" name="account" type="text" placeholder="${opts.accountPlaceholder}" autocomplete="${autocompleteValue}" valid="required,telephone,email" />
             <span id="clear-account" class="del"></span>
         </label>
         <label class="login-account-wrapper">
             <span class="password-label">${opts.passwordLabel}</span>
-            <input id="login-password" name="password" type="password" placeholder="${opts.passwordPlaceholder}" autocomplete="${autocompleteValue}" />
+            <input id="login-password" name="password" type="password" placeholder="${opts.passwordPlaceholder}" autocomplete="${autocompleteValue}" valid="required" />
         </label>
+        <span id="login-error" class="error"></span>
         <input id="login-btn" class="login-btn" type="submit" value="${opts.loginBtnText}" />
     </form>
   </div>

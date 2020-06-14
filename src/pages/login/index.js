@@ -6,10 +6,10 @@ export default class Login extends Component {
   }
   componentDidMount() {
     login({
-      container: getId('login-form'),
+      container: getId('login'),
     });
   }
   render() {
-    return <div id="login-form"></div>;
+    return <div id="login"></div>;
   }
 }

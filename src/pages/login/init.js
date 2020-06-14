@@ -1,5 +1,5 @@
 import render from './render';
-// import bindEvent from './event';
+import bindEvent from './event';
 
 const login = (opts = {}) => {
   const defaultOpts = {
@@ -13,7 +13,7 @@ const login = (opts = {}) => {
   };
   const options = Object.assign(defaultOpts, opts);
   render(options);
-  //   bindEvent(options);
+  bindEvent(options);
 };
 
 export { login };
