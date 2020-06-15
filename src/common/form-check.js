@@ -25,6 +25,8 @@ const formCheck = (form) => {
       errorResults.length > 0 &&
         checkedResults.push({
           id: element.getAttribute('id'),
+          name: element.getAttribute('name'),
+          type: errorResults[0].type,
           checkedResult: [...errorResults],
         });
     });
