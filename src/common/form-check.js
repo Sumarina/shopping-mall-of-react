@@ -1,9 +1,9 @@
 const Rules = {
-  email: (value) => {},
-  telephone: (value) => {},
   required: (value) => {
     return !value.trim() && { type: 'required', message: '必填', checkedResult: false };
   },
+  email: (value) => {},
+  telephone: (value) => {},
 };
 const formCheck = (form) => {
   if (!form || !form.elements) return false;

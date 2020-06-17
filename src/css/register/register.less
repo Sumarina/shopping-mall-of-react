@@ -1,0 +1,97 @@
+.register {
+    width: 1190px;
+    margin: 0 auto;
+
+    .register-header {
+        width: 100%;
+        padding: 20px 0px;
+
+        .header-logo {
+            display: inline-block;
+            width: 58px;
+            height: 58px;
+            background: url(../../img/logo.png) no-repeat;
+            vertical-align: middle;
+        }
+
+        h2 {
+            display: inline-block;
+            height: 58px;
+            line-height: 58px;
+            margin: 0px;
+            vertical-align: middle;
+            font-size: 24px;
+            padding: 0px 10px;
+        }
+    }
+
+    .register-mobile-wrapper {
+        margin: 0 auto;
+        width: 400px;
+
+        .register-account-wrapper {
+            display: block;
+            width: 100%;
+            font-size: 14px;
+            margin: 20px auto;
+
+            .mobile-label,
+            .verify-label {
+                height: 32px;
+                display: inline-block;
+                line-height: 32px;
+                width: 80px;
+                text-align: right;
+                padding: 0px 10px;
+                box-sizing: border-box;
+                margin: 0px;
+            }
+
+            input {
+                width: 300px;
+                height: 36px;
+                line-height: 36px;
+                padding: 12px 14px;
+                box-sizing: border-box;
+                outline: 0;
+                border: 1px solid @light-sliver;
+                display: inline-block;
+            }
+
+            input:focus {
+                border: 1px solid @salmon;
+            }
+
+            .register-verify-wrapper {
+                display: inline-block;
+                width: 300px;
+                vertical-align: middle;
+                height: 36px;
+            }
+
+        }
+
+        .register-btn {
+            min-width: 180px;
+            height: 36px;
+            line-height: 36px;
+            border: 0px solid;
+            outline: 0;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            background-color: @light-sliver;
+            color: @link;
+            margin-left: 80px;
+
+        }
+
+        .register-btn.success {
+            background-color: @salmon;
+            color: @white;
+        }
+    }
+
+
+}

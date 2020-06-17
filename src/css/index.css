@@ -4,3 +4,5 @@
 @import './space.css';
 @import './header/header.less';
 @import './login/login.less';
+@import './register/register.less';
+@import './slider.less';

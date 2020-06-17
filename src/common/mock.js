@@ -12,3 +12,5 @@ FetchMock.mock('/login', (url, opts) => {
     return { code: 400, message: '用户名错误!' };
   }
 });
+
+FetchMock.mock('getMobileVerifyToken', () => ({ code: 200, message: 'success' }));
