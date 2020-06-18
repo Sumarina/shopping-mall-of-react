@@ -1,8 +1,31 @@
 const Rules = {
   required: (value) => {
-    return !value.trim() && { type: 'required', message: '必填', checkedResult: false };
+    return !value.trim() && { type: 'required', message: '必填' };
   },
-  email: (value) => {},
+  ltFFFF: (value) => {
+    if (!v.match(/\u{ffff}-\u{fffff}/u)) {
+      return {
+        type: 'ltFFFF',
+        message: '您输入了非法字符',
+      };
+    }
+  },
+  noOther: (value) => {
+    if (!value.match(/[\P{C}]/u)) {
+      return {
+        type: 'noOther',
+        message: '您输入了非法字符',
+      };
+    }
+  },
+  email: (value) => {
+    if (!value.match(/^([\w\d_\.\-])+\@(([\w\d\-])+\.)+([\w\d{2,4}])+$/)) {
+      return {
+        type: 'email',
+        message: '请输入正确的邮箱格式',
+      };
+    }
+  },
   telephone: (value) => {},
 };
 const formCheck = (form) => {

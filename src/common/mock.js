@@ -1,4 +1,5 @@
 import FetchMock from 'fetch-mock';
+import regionData from './data/region-data';
 
 FetchMock.mock('/login', (url, opts) => {
   const params = opts.params;
@@ -14,3 +15,5 @@ FetchMock.mock('/login', (url, opts) => {
 });
 
 FetchMock.mock('getMobileVerifyToken', () => ({ code: 200, message: 'success' }));
+
+FetchMock.mock('/region-data', () => ({ code: 200, message: 'success', data: regionData }));

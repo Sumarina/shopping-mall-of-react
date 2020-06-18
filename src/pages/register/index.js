@@ -1,11 +1,11 @@
-import { register } from './mobile/init';
+import { registerTelephone } from './mobile/init';
 import { getId } from '../../common/utils';
 export default class Login extends Component {
   constructor(props) {
     super(props);
   }
   componentDidMount() {
-    register({
+    registerTelephone({
       container: getId('register-form'),
     });
   }

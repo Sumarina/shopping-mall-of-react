@@ -1,7 +1,7 @@
 import render from './render';
 import bindEvent from './event';
 
-const registerTelephone = (opts = {}) => {
+const registerInfo = (opts = {}) => {
   const defaultOpts = {
     registerBtnText: '下一步',
     mobilePlaceholder: '请输入手机号',
@@ -12,4 +12,4 @@ const registerTelephone = (opts = {}) => {
   bindEvent(options);
 };
 
-export { registerTelephone };
+export { registerInfo };

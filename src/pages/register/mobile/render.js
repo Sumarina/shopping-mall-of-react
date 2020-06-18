@@ -9,7 +9,7 @@ const template = (opts = {}) => {
         <label class="register-account-wrapper">
             <span class="verify-label">验证</span><div id="register-verify-wrapper" class="register-verify-wrapper"></div>
         </label>
-        <input type="text" id="register-btn" value="${opts.registerBtnText}" class="register-btn" />
+        <input type="button" id="register-btn" value="${opts.registerBtnText}" class="register-btn" />
     </form>
   </div>
   `;

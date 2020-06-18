@@ -14,4 +14,17 @@ const fetchPost = (url, params) => {
   });
 };
 
-export { fetchPost };
+const fetchJson = (url, params) => {
+  return fetch(url, {
+    method: 'GET',
+    params: params,
+    credentials: 'include', //fetch默认不带cookie 设置为include后会携带
+  }).then((res) => {
+    if (!res.ok) {
+      throw Error(res.statusText);
+    }
+    return res.json();
+  });
+};
+
+export { fetchPost, fetchJson };

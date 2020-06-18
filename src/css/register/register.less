@@ -1,5 +1,5 @@
 .register {
-    width: 1190px;
+    width: 960px;
     margin: 0 auto;
 
     .register-header {
@@ -8,9 +8,10 @@
 
         .header-logo {
             display: inline-block;
-            width: 58px;
-            height: 58px;
-            background: url(../../img/logo.png) no-repeat;
+            width: 36px;
+            height: 36px;
+            background-image: url(../../img/logo.png);
+            background-size: cover;
             vertical-align: middle;
         }
 
@@ -20,8 +21,9 @@
             line-height: 58px;
             margin: 0px;
             vertical-align: middle;
-            font-size: 24px;
+            font-size: 18px;
             padding: 0px 10px;
+            color: @salmon;
         }
     }
 
@@ -77,7 +79,7 @@
             line-height: 36px;
             border: 0px solid;
             outline: 0;
-            cursor: pointer;
+            cursor: not-allowed;
             text-align: center;
             font-size: 16px;
             font-weight: 700;
@@ -90,7 +92,79 @@
         .register-btn.success {
             background-color: @salmon;
             color: @white;
+            cursor: pointer;
         }
+    }
+
+    .register-info-wrapper {
+        margin: 0 auto;
+        width: 400px;
+
+        select {
+            height: 36px;
+            line-height: 36px;
+        }
+
+        .register-account-wrapper {
+            display: block;
+            width: 100%;
+            font-size: 14px;
+            margin: 20px auto;
+
+            .info-label {
+                height: 32px;
+                display: inline-block;
+                line-height: 32px;
+                width: 80px;
+                text-align: right;
+                padding: 0px 10px;
+                box-sizing: border-box;
+                margin: 0px;
+            }
+
+            input {
+                width: 300px;
+                height: 36px;
+                line-height: 36px;
+                padding: 12px 14px;
+                box-sizing: border-box;
+                outline: 0;
+                border: 1px solid @light-sliver;
+                display: inline-block;
+            }
+
+            input:focus {
+                border: 1px solid @salmon;
+            }
+
+            .register-info-address {
+                display: inline-block;
+                vertical-align: middle;
+                height: 36px;
+
+                .region-select-wrapper {
+                    height: 100%;
+                }
+            }
+
+        }
+
+        .register-btn {
+            min-width: 180px;
+            height: 36px;
+            line-height: 36px;
+            border: 0px solid;
+            outline: 0;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            margin-left: 80px;
+            background-color: @salmon;
+            color: @white;
+
+        }
+
     }
 
 
