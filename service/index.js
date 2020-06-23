@@ -5,6 +5,7 @@ const path = require('path');
 const bodyParser = require('koa-bodyparser');
 
 const fs = require('fs');
+const { chunk } = require('underscore');
 
 const staticPath = './static';
 
@@ -18,9 +19,38 @@ app.use(async (ctx, next) => {
   await next();
 });
 
-router.get('/user', async ctx => {
+router.get('/user', async (ctx) => {
   return (ctx.body = { name: 'marin', age: '20' });
 });
+
+router.get('/img', async (ctx, next) => {
+  let { imgName } = ctx.request.query; // 提取参数
+  const res = await readImg(imgName);
+  // res 为 Buffer流
+  if (res) {
+    ctx.type = 'jpg';
+    const time = 3 * 24 * 60 * 60 * 1000;
+    ctx.set('Cache-Control', `max-age=${time}`);
+    ctx.body = res;
+  }
+  await next();
+});
+// 用fs处理流
+function readImg(filePath) {
+  // 创建可读流
+  let data = [];
+  return new Promise((res, rej) => {
+    const readerStream = fs.createReadStream(path.join(__dirname, './static/starGirl.jpg'));
+    readerStream.on('data', function (chunk) {
+      data.push(chunk);
+    });
+    readerStream.on('end', function () {
+      const finalData = Buffer.concat(data); // 合并Buffer
+      res(finalData);
+    });
+  });
+}
+
 // router.post('/update', async ctx => {
 //   const body = ctx.request.body;
 //   const name = body['name'];
@@ -99,9 +129,17 @@ router.get('/user', async ctx => {
 //   return `${time.getFullYear()}年${time.getMonth() + 1}月${time.getDate()}日`;
 // }
 
+// 处理跨域
+// router.all('/*', async (ctx, next) => {
+//   // *代表允许来自所有域名请求
+//   ctx.set('Access-Control-Allow-Origin', '*');
+//   // 其他一些设置...
+//   await next();
+// });
+
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(9090, err => {
+app.listen(9090, (err) => {
   if (err) throw err;
   console.log('runing...');
 });

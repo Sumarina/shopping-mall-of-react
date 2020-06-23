@@ -6,7 +6,8 @@ export default class Login extends Component {
   }
   componentDidMount() {
     login({
-      container: getId('login'),
+      container: this.refs.login,
+      success: () => {},
     });
   }
   render() {
@@ -18,7 +19,7 @@ export default class Login extends Component {
         <div className="login-container">
           <div className="form-panel">
             <div className="login-box">
-              <div id="login" className="login-wrapper"></div>
+              <div ref="login" className="login-wrapper"></div>
               <div className="extra-links">
                 <a className="login-link">免费注册</a>
                 <a className="login-link">忘记密码</a>

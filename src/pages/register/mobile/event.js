@@ -1,7 +1,6 @@
 import Slider from '../../../common/slider';
 import { getId, addClass } from '../../../common/utils';
 import { fetchPost } from '../../../common/fetch';
-import { registerInfo } from '../info/init';
 
 export default (conf) => {
   const slider = new Slider({
@@ -12,12 +11,10 @@ export default (conf) => {
         addClass($wrapper, 'success');
         const $btn = getId('register-btn');
         addClass($btn, 'success');
-        $btn.onclick = () => {
-          registerInfo({
-            container: conf.container,
-          });
-        };
         $text.innerHTML = '操作成功';
+        $btn.onclick = () => {
+          conf.success && conf.success();
+        };
       }
     },
   });

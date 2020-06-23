@@ -44,9 +44,9 @@ export default (opts = {}) => {
         account: $account.value,
         password: $password.value,
       });
-      console.log('res', res);
       if (res.code !== 200) {
         $error.innerHTML = `${res.message}`;
+        opts.success && opts.success(res);
       }
     } else {
       const item = checked[0];
